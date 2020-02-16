@@ -1,0 +1,1 @@
+docker exec -it docker_statisticserver_docker_1 cmd

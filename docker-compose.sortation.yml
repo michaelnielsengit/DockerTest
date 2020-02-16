@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+    sortation_docker:
+        image: beumergroup/html5_sortation:1903
+        isolation: 'process'
+        hostname: sortation_docker
+        depends_on:
+            - mssql_docker
+        networks:
+            default:
+                ipv4_address: 192.168.16.70

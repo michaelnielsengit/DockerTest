@@ -1,0 +1,1 @@
+docker exec -it docker_sorter5base_docker_1 cmd

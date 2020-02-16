@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+    mssql_docker:
+        image: beumergroup/html5_sqlserver:build
+
+    sorter5base_docker:
+        tty: true
+        command: ['cmd', '/c', 'docker_install_db.cmd']
+
+    sac4base_docker:
+        tty: true
+        command: ['cmd', '/c', 'cd C:/install & docker_install_db.cmd']
+        volumes:
+            - ./sac4base_docker/testDataGen/result:C:\dbseeddata
+
+    bgalarmlink_docker:
+        tty: true
+        command: ['cmd', '/c', 'cd install & docker_install_db.cmd']
+
+    bgfusionhtml_docker:
+        tty: true
+        command: ['cmd', '/c', 'cd install & docker_install_db.cmd']

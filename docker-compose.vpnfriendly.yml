@@ -1,0 +1,40 @@
+version: '2.1'
+services:
+    mssql_docker:
+        networks:
+            default:
+                ipv4_address: 192.168.16.10
+
+    sorter5base_docker:
+        networks:
+            default:
+                ipv4_address: 192.168.16.20
+
+    sac4base_docker:
+        networks:
+            default:
+                ipv4_address: 192.168.16.30
+
+    bgalarmlink_docker:
+        networks:
+            default:
+                ipv4_address: 192.168.16.40
+
+    logserver_docker:
+        networks:
+            default:
+                ipv4_address: 192.168.16.50
+
+    bgfusionhtml_docker:
+        networks:
+            default:
+                ipv4_address: 192.168.16.60
+
+networks:
+    default: # Setup our own network with a subnet outside the coporate VPN, so that the connection doesn't get hijacked when using the VPN.
+        driver: nat 
+        name: bgfusion_default
+        ipam:
+          driver: default
+          config:
+          - subnet: 192.168.16.0/24

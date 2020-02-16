@@ -1,0 +1,66 @@
+version: '2.1'
+services:
+    mssql_docker:
+        container_name: mssql_docker
+        image: beumergroup/html5_sqlserver:latest
+        hostname: mssql_docker
+
+    sorter5base_docker:
+        image: beumergroup/html5_sorter5base:latest
+        hostname: sorter5base_docker
+        mem_limit: 2g
+        depends_on:
+            - mssql_docker
+        #tty: true
+        #command: cmd /c "cmd"
+
+    sac4base_docker:
+        image: beumergroup/html5_sac4base:latest
+        hostname: sac4base_docker
+        mem_limit: 3g
+        depends_on:
+            - mssql_docker
+
+    bgalarmlink_docker:
+        image: beumergroup/html5_bgalarmlink:latest
+        hostname: bgalarmlink_docker
+        tty: true
+        environment:
+            - ENVIRONMENT=developer
+        depends_on:
+            - mssql_docker
+
+    # statisticserver_docker:
+    #     image: beumergroup/html5_statisticserver:latest
+    #     hostname: statisticserver_docker
+    #     tty: true
+    #     mem_limit: 2g
+    #     environment:
+    #         - ENVIRONMENT=developer
+    #     depends_on:
+    #         - bgalarmlink_docker
+
+    logserver_docker:
+        image: beumergroup/html5_logserver:latest
+        hostname: logserver_docker
+        tty: true
+
+    bgfusionhtml_docker:
+        image: beumergroup/html5_bgcws:latest
+        hostname: bgfusionhtml_docker
+        mem_limit: 2g
+        ports:
+            - 8001:8001
+            - 3268:3268
+        environment:
+            - ENVIRONMENT=developer
+        tty: true
+        depends_on:
+            - mssql_docker
+            - sorter5base_docker
+            - sac4base_docker
+            - bgalarmlink_docker
+networks:
+    default:
+        external:
+            name: 'nat'

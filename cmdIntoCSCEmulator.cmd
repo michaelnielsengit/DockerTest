@@ -1,0 +1,1 @@
+docker exec -it docker_sortation_docker_1 cmd /K C:\docker_start_csc_emulator_env.cmd

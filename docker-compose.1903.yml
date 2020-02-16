@@ -1,0 +1,25 @@
+version: '2.1'
+services:
+    mssql_docker:
+        image: beumergroup/html5_sqlserver:1903
+        isolation: 'process'
+
+    sorter5base_docker:
+        image: beumergroup/html5_sorter5base:1903
+        isolation: 'process'
+
+    sac4base_docker:
+        image: beumergroup/html5_sac4base:1903
+        isolation: 'process'
+
+    bgalarmlink_docker:
+        image: beumergroup/html5_bgalarmlink:1903
+        isolation: 'process'
+
+    logserver_docker:
+        image: beumergroup/html5_logserver:1903
+        isolation: 'process'
+
+    bgfusionhtml_docker:
+        image: beumergroup/html5_bgcws:1903
+        isolation: 'process'
