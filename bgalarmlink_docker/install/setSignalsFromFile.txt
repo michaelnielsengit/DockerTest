@@ -1,0 +1,2 @@
+send -dIFConnection -rCoreTaskCommand S:KeyValueParamsValues:FileName|C:\install\signals.txt S:ColumnBindingValues: s:command:SetSignalsAndManage s:Username:xxx
+recv -rCoreTaskCommand

@@ -1,0 +1,7 @@
+
+set DBSERVER=MSSQL2014
+set DBSERVERNAME=mssql_docker
+set DBSERVERUSERNAME=sa
+set DBSERVERPASSWORD=1Password
+
+set DBNAME=AlarmlinkDB
